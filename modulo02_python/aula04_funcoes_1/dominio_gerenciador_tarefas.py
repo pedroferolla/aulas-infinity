@@ -80,6 +80,22 @@
         # Antes de fazer isso, verifique se o índice informado é válido (não pode ser menor que 0 ou maior que o número 
         # total de tarefas).
 
+    # Passo 5: Função para Remover uma Tarefa
+        # Impremente a função 'remover_tarefa', que recebe o índice da tarefa e a remove da lista.
+        # Também, assim como no caso de marcar como concluída, valide o índice para garantir que ele está dentro do 
+        # intervalo correto.
+
+    # Passo 6: Criando o Menu Interativo
+        # Agora, vamos criar um menu que permitirá ao usuário escolher qual funcionalidade deseja usar.
+
+        # O menu terá as seguintes opções:
+        # [1] Adicionar uma nova tarefa.
+        # [2] Listar as tarefas.
+        # [3] Marcar uma tarefa como concluída.
+        # [4] Remover uma tarefa.
+        # [5] Sair do programa.
+
+
 # 1:
 tarefas = []
 tarefas = [
@@ -144,8 +160,62 @@ def marcar_concluida(indice_tarefa: int):
     for indice, tarefa in enumerate(tarefas, start = 1):
         print(f"[{indice}] {tarefa['Descrição']} - {tarefa['Status']}")
 
+# tarefas_listar(tarefas)
+# indice_tarefa = int(input('Qual tarefa você deseja concluir? '))
 
-tarefas_listar(tarefas)
-indice_tarefa = int(input('Qual tarefa você deseja concluir? '))
+# marcar_concluida(indice_tarefa)
 
-marcar_concluida(indice_tarefa)
+
+# 5:
+def remover_tarefa(indice_tarefa: int):
+    if indice_tarefa <= 0 or indice_tarefa > len(tarefas):
+        print('Índice inválido.')
+    else:
+        tarefas.pop(indice_tarefa - 1)
+        print(f'Tarefa {indice_tarefa} removida com sucesso.')
+
+    print('\nLISTA ATUALIZADA:')
+    for indice, tarefa in enumerate(tarefas, start = 1):
+        print(f"[{indice}] {tarefa['Descrição']} - {tarefa['Status']}")
+
+# tarefas_listar(tarefas)
+# indice_tarefa = int(input('\nQual tarefa você deseja remover? '))
+
+# remover_tarefa(indice_tarefa)
+
+
+# 6:
+print('\nBem-vindo(a) ao Gerenciador de Tarefas!')
+
+while True:
+    print('\nMENU:')
+    print('[1] Adicionar uma nova tarefa.')
+    print('[2] Listar as tarefas.')
+    print('[3] Marcar uma tarefa como concluída.')
+    print('[4] Remover uma tarefa.')
+    print('[5] Sair do programa.')
+
+    opcao = input('\nDigite o número da opção desejada: ')
+
+    if opcao == '1':
+        adicionar_tarefa(descricao = input('\nDigite a tarefa a ser adicionada: '))
+    
+    elif opcao == '2':
+        listar_tarefas(tarefas)
+    
+    elif opcao == '3':
+        tarefas_listar(tarefas)
+        indice_tarefa = int(input('\nQual tarefa você deseja concluir? '))
+        marcar_concluida(indice_tarefa)
+
+    elif opcao == '4':
+        tarefas_listar(tarefas)
+        indice_tarefa = int(input('\nQual tarefa você deseja remover? '))
+        remover_tarefa(indice_tarefa)
+
+    elif opcao == '5':
+        print('\nPrograma encerrado.')
+        break
+
+    else:
+        print('\nOpção inválida.\nTente novamente.')
