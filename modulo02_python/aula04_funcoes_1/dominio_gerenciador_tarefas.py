@@ -98,6 +98,7 @@
 
 # 1:
 tarefas = []
+# Lista de testes:
 tarefas = [
     {'Descrição': 'Estudar Pyhton', 'Status': 'Pendente'},
     {'Descrição': 'Fazer supermercado', 'Status': 'Concluído'},
