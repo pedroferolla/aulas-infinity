@@ -28,7 +28,7 @@ class Elevador:
         andar_final = self.piso_atual + qnt_andares
 
         if andar_final > self.total_pisos:
-            print(f'Não é possível subir {qnt_andares}')
+            print(f'Não é possível subir {qnt_andares} andares.')
         else:
             self.piso_atual = andar_final
 
@@ -38,12 +38,30 @@ class Elevador:
         if andar_final >= 0:
             self.piso_atual = andar_final
         else:
-            print(f'Não é possível descer {qnt_andares}')
+            print(f'Não é possível descer {qnt_andares} andares.')
+
+    def ir_para_piso(self, piso_especificado: int):
+        if piso_especificado >= 0 and piso_especificado <= 10:
+            self.piso_atual = piso_especificado
+        else:
+            print('Andar inexistente!')
+
+    def exibir_piso_atual(self):
+        print(f'Piso atual: {self.piso_atual}º andar')
+
+    
         
 
 elevador1 = Elevador(10)
-print(elevador1.piso_atual)
+print(f'Andar: {elevador1.piso_atual}º')
+
 elevador1.subir(6)
-print(elevador1.piso_atual)
+print(f'Andar: {elevador1.piso_atual}º')
+
 elevador1.subir(2)
-print(elevador1.piso_atual)
+print(f'Andar: {elevador1.piso_atual}º')
+
+elevador1.ir_para_piso(7)
+print(f'Andar: {elevador1.piso_atual}º')
+
+elevador1.exibir_piso_atual()
